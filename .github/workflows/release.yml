@@ -35,7 +35,7 @@ jobs:
       id: get_tag
       run: echo ::set-env name=GIT_TAG::${GITHUB_REF/refs\/tags\//}
     - name: Publish bm-inventory to Registry
-      uses: elgohr/Publish-Docker-Github-Action@2.15
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: bm-inventory
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -45,7 +45,7 @@ jobs:
         buildargs: GIT_REVISION
         tags: "${{ env.GIT_TAG }},${{ env.GIT_REVISION }}"
     - name: Publish expirer to Registry
-      uses: elgohr/Publish-Docker-Github-Action@2.15
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: s3-object-expirer
         username: ${{ secrets.DOCKER_USERNAME }}
